@@ -5,8 +5,9 @@
 
 # 📬 Message in a Bottle (Mensagens Anônimas) - Aplicação Cliente-Servidor com Flask + Sockets
 
-Este projeto é uma aplicação de rede baseada em arquitetura **cliente-servidor**, onde usuários podem **enviar** e **ler mensagens anônimas** através de uma **interface web**. Foi desenvolvido para fins didáticos na disciplina de **Redes de Computadores (2025)**.
+Este projeto é uma aplicação de rede baseada em arquitetura **cliente-servidor**, onde usuários podem **enviar** e **ler mensagens anônimas** através de uma **interface web**. Foi desenvolvido para fins didáticos na disciplina de **Redes de Computadores**.
 
+https://www.youtube.com/watch?v=4m3CMTeo-nU
 
 ## 🧠 Funcionalidades
 
