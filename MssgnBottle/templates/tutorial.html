@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutorial - Mensagens Anônimas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ol {
+            font-size: 18px;
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Como usar a Ferramenta</h1>
+        <ol>
+            <li>Digite sua mensagem anônima no campo de texto.</li>
+            <li>Clique no botão <strong>“Enviar”</strong> para armazená-la no servidor.</li>
+            <li>Outro usuário pode clicar no botão <strong>“Ler mensagem”</strong> para receber uma mensagem aleatória (e removê-la da fila).</li>
+            <li>As mensagens não são associadas a nenhum nome ou IP na interface.</li>
+            <li>Use a aplicação em diferentes dispositivos conectados à mesma rede.</li>
+        </ol>
+        <a href="{{ url_for('index') }}">⬅ Voltar à página inicial</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensagens Anônimas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            resize: vertical;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin: 0 5px;
+        }
+
+        #btn-enviar {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #btn-enviar:hover {
+            background-color: #45a049;
+        }
+
+        #btn-ler {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        #btn-ler:hover {
+            background-color: #1e87e5;
+        }
+
+        #mensagem-lida {
+            margin-top: 10px;
+            padding: 15px;
+            background: #f1f1f1;
+            border-left: 4px solid #2196F3;
+            border-radius: 6px;
+            font-size: 17px;
+        }
+
+        .tutorial-link {
+            margin-top: 20px;
+            display: block;
+            color: #2196F3;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .tutorial-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Message in a Bottle 🪼</h1>
+
+        <form id="formulario">
+            <textarea name="mensagem" required placeholder="Digite sua mensagem anônima..."></textarea>
+            <div class="buttons">
+                <button type="submit" id="btn-enviar">Enviar</button>
+                <button type="button" id="btn-ler" onclick="lerMensagem()">Ler mensagem</button>
+            </div>
+        </form>
+
+        <div id="mensagem-lida" style="display: none;"></div>
+
+        <a class="tutorial-link" href="{{ url_for('tutorial') }}">📘 Como usar a ferramenta</a>
+    </div>
+
+    <script>
+        document.getElementById('formulario').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            await fetch('/enviar', { method: 'POST', body: formData });
+            e.target.reset();
+            alert("Mensagem enviada com sucesso!");
+        };
+
+        async function lerMensagem() {
+            const res = await fetch('/ler');
+            const data = await res.json();
+            const div = document.getElementById('mensagem-lida');
+            if (data.mensagem) {
+                div.innerText = data.mensagem;
+                div.style.display = 'block';
+            } else {
+                div.innerText = "Não há mensagens disponíveis no momento.";
+                div.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
